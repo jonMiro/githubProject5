@@ -90,7 +90,7 @@ jobs: #Definim cada job y el sistema que utilitzará amb els pasos
   Deploy_job:
     runs-on: ubuntu-latest
     needs: Cypress_job  # Este job depende de Cypress_job
-    continue on error: true
+    continue-on-error: true
 
     steps:
       - name: Checkout codi
