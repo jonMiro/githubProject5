@@ -96,13 +96,30 @@ jobs: #Definim cada job y el sistema que utilitzará amb els pasos
       - name: Checkout codi
         uses: actions/checkout@v4  # Realiza el checkout del código
 
-      - name: Deploy en Vercel
-        uses: amondnet/vercel-action@v20
+      - name: install node.js
+        uses: actions/setup-node@v3
         with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}  # Token d'autenticació
-          vercel-args: "--prod"
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}  # ID de l'organització a Vercel
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}  # ID del projecte a Vercel
+          node-version: '16'
+      
+      - name: instalar dependencies
+        run: npm install
+
+      - name: build proyecte
+        run: npm run build
+      
+      - name: deploy vercel
+        env: 
+          VERCEL_TOKEN: ${{secrets.VERCEL_TOKEN}}
+        run: npx vercel --prod --token=$VERCEL_TOKEN --yes
+
+      
+      # - name: Deploy en Vercel
+      #   uses: amondnet/vercel-action@v20
+      #   with:
+      #     vercel-token: ${{ secrets.VERCEL_TOKEN }}  # Token d'autenticació
+      #     vercel-args: "--prod"
+      #     vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}  # ID de l'organització a Vercel
+      #     vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}  # ID del projecte a Vercel
 
   notification_job:
     name: Notificacio telegram
