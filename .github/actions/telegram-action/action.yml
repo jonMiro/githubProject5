@@ -1,0 +1,15 @@
+name: 'Enviar notificació'
+description: 'Notificacio a telegram'
+inputs:
+  token:
+    description: 'Telegram Bot Token'
+    required: true
+  chat_id:
+    description: 'Telegram Chat ID'
+    required: true
+  message:
+    description: 'Message to send'
+    required: true
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
