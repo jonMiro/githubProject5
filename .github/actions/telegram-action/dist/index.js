@@ -82823,8 +82823,8 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(7484);
 const TelegramBot = __nccwpck_require__(5633);
 
-const token = core.getInput("telegram_token");
-const chatId = core.getInput("telegram_id_user");
+const token = core.getInput("token");
+const chatId = core.getInput("chat_id");
 const message = core.getInput("message");
 
 // Crear una instancia del bot
