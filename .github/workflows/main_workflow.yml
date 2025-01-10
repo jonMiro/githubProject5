@@ -112,7 +112,7 @@ notification_job:
     - name: Checkout codi
       uses: actions/checkout@v3
 
-    - name:enviar notificació telegram
+    - name: enviar notificació telegram
       uses: ./.github/actions/telegram-action
       with:
         token: ${{ secrets.TELEGRAM_TOKEN }}
