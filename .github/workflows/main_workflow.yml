@@ -104,25 +104,25 @@ jobs: #Definim cada job y el sistema que utilitzará amb els pasos
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}  # ID de l'organització a Vercel
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}  # ID del projecte a Vercel
 
-notification_job:
-  name: Notificacio telegram
-  needs: [linter_job, cypress_job, add_badge_job, deploy_job]
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout codi
-      uses: actions/checkout@v3
+  notification_job:
+    name: Notificacio telegram
+    needs: [linter_job, cypress_job, add_badge_job, deploy_job]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout codi
+        uses: actions/checkout@v3
 
-    - name: enviar notificació telegram
-      uses: ./.github/actions/telegram-action
-      with:
-        token: ${{ secrets.TELEGRAM_TOKEN }}
-        chat_id: ${{ secrets.TELEGRAM_CHAT_ID }}
-        message: |
-          🚀 Resultat del workflow "nom_repositori_workflow":
+      - name: enviar notificació telegram
+        uses: ./.github/actions/telegram-action
+        with:
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          chat_id: ${{ secrets.TELEGRAM_CHAT_ID }}
+          message: |
+            🚀 Resultat del workflow "nom_repositori_workflow":
 
-          - **linter_job**: ${{ job.status == 'linter_job' && 'success' || 'failure' }}
-          - **cypress_job**: ${{ job.status == 'cypress_job' && 'success' || 'failure' }}
-          - **add_badge_job**: ${{ job.status == 'add_badge_job' && 'success' || 'failure' }}
-          - **deploy_job**: ${{ job.status == 'deploy_job' && 'success' || 'failure' }}
+            - **linter_job**: ${{ job.status == 'linter_job' && 'success' || 'failure' }}
+            - **cypress_job**: ${{ job.status == 'cypress_job' && 'success' || 'failure' }}
+            - **add_badge_job**: ${{ job.status == 'add_badge_job' && 'success' || 'failure' }}
+            - **deploy_job**: ${{ job.status == 'deploy_job' && 'success' || 'failure' }}
 
        
