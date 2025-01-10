@@ -113,7 +113,7 @@ notification_job:
       uses: actions/checkout@v3
 
     - name:enviar notificació telegram
-      uses: ./github/actions/telegram-action
+      uses: ./.github/actions/telegram-action
       with:
         token: ${{ secrets.TELEGRAM_TOKEN }}
         chat_id: ${{ secrets.TELEGRAM_CHAT_ID }}
