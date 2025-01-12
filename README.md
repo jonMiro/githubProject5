@@ -118,7 +118,7 @@ Ara ja tenim el nostre repositori actualitzat amb el projecte que hi havia que d
 
 5. Pujem els canvis y comprobem si funciona.
 
-<img src="images/18.pngng" width="500">
+<img src="images/18.png" width="500">
 
 
 ### 7.NOTIFICACIÖ TELEGRAMM
